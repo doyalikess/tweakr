@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweakr Pro - Ultimate System Optimizer</title>
+    <style>
+        :root {
+            --primary: #42aaff;
+            --dark: #111218;
+            --darker: #0b0c12;
+            --accent: #1f6feb;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .logo span:first-child {
+            color: var(--primary);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .btn:hover {
+            background-color: #2f7fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-download {
+            background-color: var(--primary);
+            margin-right: 1rem;
+        }
+        
+        .btn-download:hover {
+            background-color: #5ab5ff;
+        }
+        
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--darker);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .screenshots {
+            padding: 4rem 2rem;
+            background-color: var(--darker);
+        }
+        
+        .screenshots h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .screenshot-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .testimonials {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--darker);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .download-cta {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+        }
+        
+        .download-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .download-cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background-color: var(--darker);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 0 auto 1rem;
+                max-width: 250px;
+            }
+            
+            .btn-download {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Tweakr</span>
+            <span>Pro</span>
+        </div>
+        <p class="tagline">The ultimate system optimization tool for gamers and power users</p>
+    </header>
+    
+    <section class="hero">
+        <h1>Boost Your FPS & System Performance</h1>
+        <p>Tweakr Pro optimizes your Windows system for maximum gaming performance, faster response times, and smoother gameplay.</p>
+        <a href="#download" class="btn btn-download">Download Now</a>
+        <a href="#features" class="btn">Learn More</a>
+    </section>
+    
+    <section class="features" id="features">
+        <h2>Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>FPS Boost</h3>
+                <p>Increase your game frame rates by optimizing system resources and disabling unnecessary background processes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Ultimate Performance</h3>
+                <p>Enable hidden Windows power plans for maximum system responsiveness and reduced input lag.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Privacy Protection</h3>
+                <p>Disable telemetry and data collection services to protect your privacy and free up system resources.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Game Mode</h3>
+                <p>Special optimizations that prioritize gaming performance over other system tasks.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>One-Click Tweaks</h3>
+                <p>Easy to use interface with pre-configured optimization profiles for different use cases.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📶</div>
+                <h3>Network Optimization</h3>
+                <p>Reduce ping and network latency with our advanced network tweaks for online gaming.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="screenshots">
+        <h2>See It In Action</h2>
+        <div class="screenshot-container">
+            <img src="https://via.placeholder.com/1000x600/111218/42aaff?text=Tweakr+Pro+Interface" alt="Tweakr Pro Screenshot" class="screenshot">
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <h2>What Gamers Are Saying</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Gained 20+ FPS in all my games after using Tweakr Pro. My system runs smoother than ever!"</p>
+                <p class="testimonial-author">- Mark, Competitive CS:GO Player</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Finally a tool that actually makes a difference. My ping dropped by 15ms in Valorant."</p>
+                <p class="testimonial-author">- Sarah, Esports Enthusiast</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The one-click optimizations saved me hours of manual tweaking. Worth every penny!"</p>
+                <p class="testimonial-author">- Alex, PC Builder</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="download-cta" id="download">
+        <h2>Ready to Boost Your System?</h2>
+        <p>Download Tweakr Pro today and experience the difference in performance. Completely free with optional premium features.</p>
+        <a href="Tweakr.exe" class="btn btn-download" download>Download Tweakr Pro</a>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Windows 10/11 | Version 1.0.0 | 5.2 MB</p>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Download</a>
+            <a href="#">Support</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p class="copyright">© 2023 Tweakr Pro. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Download button animation
+        const downloadBtn = document.querySelector('.btn-download');
+        downloadBtn.addEventListener('mouseover', () => {
+            downloadBtn.innerHTML = 'Download Tweakr Pro 🚀';
+        });
+        downloadBtn.addEventListener('mouseout', () => {
+            downloadBtn.innerHTML = 'Download Tweakr Pro';
+        });
+        
+        // Feature card animations
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+            card.addEventListener('mouseover', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.transform = 'scale(1.2)';
+                icon.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseout', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
