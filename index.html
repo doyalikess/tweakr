@@ -3,1824 +3,1006 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tweakr Pro - Ultimate FPS Booster & System Optimizer</title>
-	
-    <!-- Google AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7023860641256364"
-     crossorigin="anonymous"></script>
-	 
+    <title>Tweakr - Ultimate FPS Optimization for Windows</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="description" content="Boost FPS, reduce lag, and optimize your gaming PC with Tweakr Pro - the ultimate system optimizer for Windows">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #42aaff;
-            --primary-dark: #1a7dcc;
-            --dark: #0f111a;
-            --darker: #090b12;
-            --accent: #1f6feb;
-            --light: #f8f9fa;
-            --success: #4CAF50;
-            --warning: #FFC107;
-            --danger: #F44336;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b3c5;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #121218;
+            --bg-tertiary: #1a1a24;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0c0;
+            --accent: #5e9eff;
+            --accent-hover: #7ab0ff;
+            --neon: #00f0ff;
+            --success: #00d16c;
+            --warning: #ffb340;
+            --error: #ff4d5e;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 15px rgba(94, 158, 255, 0.5);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
-            background-color: var(--dark);
+            background-color: var(--bg-primary);
+            background-image: radial-gradient(circle at 15% 30%, rgba(30, 30, 60, 0.3), transparent 25%),
+                              radial-gradient(circle at 85% 70%, rgba(40, 40, 80, 0.3), transparent 25%);
             color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(15, 17, 26, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 8px 15px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 26px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--darker);
-            transition: .4s;
-            border-radius: 34px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 4px;
-            bottom: 4px;
-            background-color: var(--primary);
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: var(--darker);
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(24px);
-            background-color: var(--primary);
-        }
-        
-        .theme-label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            padding: 2.5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(66,170,255,0.08) 0%, rgba(0,0,0,0) 70%);
-            animation: rotate 20s linear infinite;
-            z-index: 0;
-        }
-        
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .logo span:first-child {
-            color: var(--primary);
-            text-shadow: 0 0 15px rgba(66, 170, 255, 0.4);
-        }
-
-        .logo span:last-child {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .tagline {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 5rem 2rem;
-            text-align: center;
-            background: linear-gradient(rgba(9,11,18,0.9), rgba(9,11,18,0.9)), 
-                        url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1778&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .hero-content {
-            max-width: 850px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title {
-            font-size: 3.8rem;
-            margin-bottom: 1.8rem;
-            min-height: 130px;
-            font-weight: 800;
-            line-height: 1.2;
-            background: linear-gradient(90deg, #ffffff, #d6e4ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .highlight {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: shine 3s infinite;
-            background-size: 200% auto;
-            font-weight: 600;
-        }
-        
-        @keyframes shine {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--primary);
-            color: #111;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(66, 170, 255, 0.3);
-        }
-        
-        .btn:hover {
-            background-color: #5ab5ff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(66, 170, 255, 0.4);
-        }
-        
-        .btn:active {
-            transform: translateY(1px) scale(0.98);
-        }
-        
-        .btn-download {
-            background-color: var(--primary);
-            color: #111;
-        }
-        
-        .btn-download:hover {
-            background-color: #5ab5ff;
-        }
-        
-        .btn-video {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-        
-        .btn-video:hover {
-            background-color: rgba(66, 170, 255, 0.1);
-            color: var(--primary);
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(66, 170, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(66, 170, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(66, 170, 255, 0); }
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 4rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .stat-card {
-            background: rgba(255,255,255,0.05);
-            padding: 1.8rem 2.5rem;
-            border-radius: 12px;
-            min-width: 200px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .stat-label {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Features */
-        .features {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
             position: relative;
         }
 
-        .features::before {
+        body::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(66,170,255,0.05) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(94, 158, 255, 0.05) 0%, transparent 15%),
+                radial-gradient(circle at 90% 80%, rgba(94, 158, 255, 0.05) 0%, transparent 15%);
             z-index: -1;
+            pointer-events: none;
         }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-            position: relative;
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(80, 80, 100, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
+            text-decoration: none;
         }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 20px auto 0;
-            border-radius: 5px;
+
+        .logo span {
+            color: var(--accent);
         }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
         }
-        
-        .feature-card {
-            background-color: var(--darker);
-            padding: 2.5rem;
-            border-radius: 15px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255,255,255,0.08);
+
+        nav ul {
             display: flex;
-            flex-direction: column;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--text-primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--glow);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            box-shadow: 0 0 25px rgba(94, 158, 255, 0.7);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
             position: relative;
             overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #f0f0f0, #b0b0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(240, 240, 240, 0.2);
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .secondary-button:hover {
+            background: rgba(240, 240, 240, 0.05);
+            border-color: var(--accent);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .windows-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 113, 197, 0.15);
+            color: #00a2ed;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .windows-badge i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .mockup {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(80, 80, 100, 0.2);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            height: 320px;
+            position: relative;
+        }
+
+        .mockup-header {
+            height: 40px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-bottom: 1px solid rgba(80, 80, 100, 0.2);
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .mockup-dot:nth-child(1) { background: var(--error); }
+        .mockup-dot:nth-child(2) { background: var(--warning); }
+        .mockup-dot:nth-child(3) { background: var(--success); }
+
+        .mockup-content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            height: calc(100% - 40px);
+        }
+
+        .mockup-card {
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            padding: 15px;
+            border: 1px solid rgba(80, 80, 100, 0.2);
+        }
+
+        .mockup-card:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        .mockup-bar {
+            height: 6px;
+            background: rgba(80, 80, 100, 0.3);
+            border-radius: 3px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .mockup-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 70%;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid rgba(80, 80, 100, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(94, 158, 255, 0.3);
+            box-shadow: var(--glow);
         }
 
         .feature-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(66,170,255,0.05) 0%, transparent 70%);
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(66, 170, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background-color: rgba(15, 17, 26, 0.7);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
         .feature-card:hover::before {
-            opacity: 1;
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-        
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-primary);
-            font-weight: 600;
-            z-index: 1;
+            transform: scaleX(1);
         }
 
-        .feature-card p {
-            color: var(--text-secondary);
-            z-index: 1;
-            line-height: 1.7;
-        }
-        
-        /* Comparison Table */
-        .comparison {
-            margin: 5rem auto;
-            max-width: 1100px;
-            overflow-x: auto;
-            padding: 0 2rem;
-        }
-        
-        .comparison table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--darker);
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(94, 158, 255, 0.1);
             border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
         }
-        
-        .comparison th, .comparison td {
-            padding: 1.2rem 1.5rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+        .feature-icon i {
+            font-size: 24px;
+            color: var(--accent);
         }
-        
-        .comparison th {
-            background-color: rgba(66, 170, 255, 0.1);
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 1.1rem;
+
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
         }
-        
-        .comparison .highlight {
-            background-color: rgba(66, 170, 255, 0.15);
+
+        .feature-desc {
+            color: var(--text-secondary);
+        }
+
+        /* Download Section */
+        .download {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 100px 0;
             position: relative;
+            border-radius: var(--border-radius);
+            margin: 50px auto;
+            max-width: 1200px;
+            border: 1px solid rgba(80, 80, 100, 0.2);
         }
-        
-        .comparison .highlight:after {
-            content: 'RECOMMENDED';
+
+        .download::before {
+            content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            color: #111;
-            font-size: 0.7rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 0 0 0 5px;
-            font-weight: 700;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(94, 158, 255, 0.05), transparent 70%);
+            z-index: 0;
         }
-        
-        .comparison tr:last-child td {
+
+        .download-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(0, 209, 108, 0.1);
+            color: var(--success);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .download-box {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(80, 80, 100, 0.2);
+            text-align: center;
+        }
+
+        .windows-icon {
+            font-size: 60px;
+            color: #00a2ed;
+            margin-bottom: 20px;
+        }
+
+        .download-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-weight: 600;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            padding: 15px 40px;
+            margin-top: 20px;
+        }
+
+        .download-note {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* System Requirements */
+        .requirements {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-top: 50px;
+            border: 1px solid rgba(80, 80, 100, 0.2);
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .requirement-card {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border: 1px solid rgba(80, 80, 100, 0.2);
+        }
+
+        .requirement-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .requirement-list {
+            list-style: none;
+        }
+
+        .requirement-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(80, 80, 100, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .requirement-list li:last-child {
             border-bottom: none;
         }
 
-        .comparison td {
+        .requirement-name {
             color: var(--text-secondary);
         }
 
-        .comparison .feature-name {
-            color: var(--text-primary);
+        .requirement-value {
             font-weight: 500;
-        }
-
-        .comparison .check {
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        .comparison .cross {
-            color: var(--danger);
-            font-weight: 600;
-        }
-        
-        /* Performance Meter */
-        .performance-meter {
-            background-color: var(--darker);
-            border-radius: 15px;
-            padding: 2.5rem;
-            margin: 4rem auto;
-            max-width: 900px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .performance-meter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(66,170,255,0.05) 0%, transparent 70%);
-            z-index: 0;
-        }
-        
-        .metric {
-            text-align: center;
-            padding: 1.2rem;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(5px);
-        }
-
-        .metric:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .metric .label {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-        
-        .metric .value {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1;
-        }
-
-        /* Before/After Slider */
-        .before-after-section {
-            padding: 5rem 2rem;
-            background: linear-gradient(rgba(9,11,18,0.9), rgba(9,11,18,0.9)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .before-after {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .before-after-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .before-image, .after-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .before-image {
-            background-image: url('https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
-            z-index: 1;
-        }
-
-        .after-image {
-            background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
-            width: 50%;
-            z-index: 2;
-            border-right: 3px solid rgba(255,255,255,0.8);
-        }
-
-        .slider-handle {
-            position: absolute;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background-color: white;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            cursor: ew-resize;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            transition: transform 0.2s ease;
-        }
-
-        .slider-handle:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .slider-handle:after {
-            content: "↔";
-            font-size: 20px;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .before-after-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        @media (max-width: 768px) {
-            .before-after-container {
-                height: 350px;
-            }
-        }
-
-        /* Benchmark Chart */
-        .benchmark-section {
-            padding: 5rem 2rem;
-            background-color: var(--darker);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benchmark-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 30%, rgba(66,170,255,0.05) 0%, transparent 50%);
-            z-index: 0;
-        }
-
-        .benchmark-chart {
-            background-color: var(--dark);
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin: 0 auto;
-            max-width: 1100px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-        }
-
-        .chart-legend {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .chart-legend span {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-        
-        .chart-legend span:before {
-            content: '';
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
-        }
-        
-        .chart-legend .before:before {
-            background-color: #555;
-        }
-        
-        .chart-legend .after:before {
-            background-color: var(--primary);
-        }
-
-        /* Trust Badges */
-        .trust-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 0 auto;
-            max-width: 1100px;
-        }
-        
-        .badge {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: rgba(255,255,255,0.05);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .badge:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .badge svg {
-            width: 22px;
-            height: 22px;
-            fill: var(--primary);
-        }
-
-        .badge span {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 70%, rgba(66,170,255,0.05) 0%, transparent 50%);
-            z-index: 0;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .testimonial-card {
-            background-color: var(--darker);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: rgba(66, 170, 255, 0.3);
-        }
-        
-        .testimonial-card:before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 25px;
-            font-size: 6rem;
-            opacity: 0.05;
-            line-height: 1;
-            z-index: 0;
-            font-family: serif;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-            color: var(--text-primary);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .testimonial-author::before {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-
-        /* Download CTA */
-        .download-cta {
-            padding: 6rem 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .download-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(66,170,255,0.1) 0%, rgba(0,0,0,0) 70%);
-            animation: rotate 20s linear infinite;
-            z-index: 0;
-        }
-        
-        .download-cta h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.8rem;
-            position: relative;
-            z-index: 1;
-            font-weight: 700;
-            background: linear-gradient(90deg, #ffffff, #d6e4ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .download-cta p {
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-size: 1.25rem;
-            position: relative;
-            z-index: 1;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        
-        .download-info {
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-            opacity: 0.8;
-            position: relative;
-            z-index: 1;
-            color: var(--text-secondary);
         }
 
         /* Footer */
         footer {
-            padding: 4rem 2rem 3rem;
-            text-align: center;
-            background-color: var(--darker);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            position: relative;
+            background: var(--bg-tertiary);
+            padding: 60px 0 30px;
+            margin-top: 100px;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        
-        .footer-links {
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
             display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
+            gap: 15px;
         }
-        
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
+            transition: var(--transition);
         }
-        
+
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--text-primary);
+            padding-left: 5px;
         }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2.5rem 0;
-        }
-        
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-            background: rgba(66, 170, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
+
         .copyright {
-            opacity: 0.7;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 2rem;
-        }
-
-        /* Download Modal */
-        .download-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .download-modal.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        .progress-container {
-            width: 80%;
-            max-width: 500px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            position: relative;
-        }
-        
-        .progress {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s ease;
-            border-radius: 10px;
-        }
-
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .download-modal p {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
             text-align: center;
-            max-width: 500px;
-            line-height: 1.6;
-        }
-
-        .download-modal .filename {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .close-modal:hover {
-            opacity: 1;
+            padding-top: 30px;
+            border-top: 1px solid rgba(80, 80, 100, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 3.2rem;
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .section-title {
-                font-size: 2.4rem;
+            .hero-text {
+                max-width: 100%;
+            }
+            
+            .hero p {
+                max-width: 100%;
+                margin: 0 auto 30px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .mockup {
+                margin: 0 auto;
             }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                min-height: auto;
-                padding: 4rem 2rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-                min-height: auto;
-                margin-bottom: 1.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-                margin-bottom: 2rem;
-            }
-            
-            .cta-buttons {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
-                gap: 15px;
+                gap: 20px;
             }
             
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 3rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stat-card {
-                min-width: 160px;
-                padding: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.2rem;
-            }
-
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .logo {
-                font-size: 2.2rem;
-            }
-
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                padding: 6px 12px;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .download-cta h2 {
-                font-size: 2rem;
-            }
-
-            .before-after-container {
-                height: 300px;
-            }
-
-            .feature-card {
-                padding: 2rem;
-            }
-
-            .trust-badges {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .badge {
-                width: 100%;
+            nav ul {
+                flex-wrap: wrap;
                 justify-content: center;
             }
-        }
-
-        /* Animations */
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <div class="theme-toggle fade-in">
-        <label class="switch">
-            <input type="checkbox" id="theme-switcher">
-            <span class="slider"></span>
-        </label>
-        <span class="theme-label">Dark Mode</span>
-    </div>
-    
+    <!-- Header -->
     <header>
-        <div class="logo fade-in">
-            <span>Tweakr</span>
-            <span>Pro</span>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-rocket"></i>
+                    Tweak<span>r</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#requirements">Requirements</a></li>
+                    </ul>
+                </nav>
+                <a href="#download" class="cta-button">Download Now</a>
+            </div>
         </div>
-        <p class="tagline fade-in delay-1">The ultimate system optimization tool for gamers and power users</p>
     </header>
-    
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title" id="typewriter"></h1>
-            <p class="hero-subtitle fade-in delay-1">The <span class="highlight">ultimate</span> Windows optimization toolkit for maximum gaming performance</p>
-            <div class="cta-buttons">
-                <a href="#download" class="btn btn-download pulse fade-in delay-2">
-                    <i class="fas fa-download"></i> Download Now
-                </a>
-                <a href="https://youtu.be/dQw4w9WgXcQ" class="btn btn-video fade-in delay-2">
-                    <i class="fas fa-play"></i> Watch Demo
-                </a>
-            </div>
-        </div>
-        <div class="hero-stats">
-            <div class="stat-card fade-in delay-1">
-                <div class="stat-number" data-count="120">0</div>
-                <div class="stat-label">Avg. FPS Boost</div>
-            </div>
-            <div class="stat-card fade-in delay-2">
-                <div class="stat-number" data-count="35">0</div>
-                <div class="stat-label">Optimization Tweaks</div>
-            </div>
-            <div class="stat-card fade-in delay-3">
-                <div class="stat-number" data-count="10">0</div>
-                <div class="stat-label">Supported Games</div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="features" id="features">
-        <h2 class="section-title fade-in">Powerful Features</h2>
-        <div class="features-grid">
-            <div class="feature-card fade-in">
-                <div class="feature-icon">🚀</div>
-                <h3>FPS Boost</h3>
-                <p>Increase your game frame rates by optimizing system resources and disabling unnecessary background processes. See immediate performance gains in all your favorite games.</p>
-            </div>
-            <div class="feature-card fade-in delay-1">
-                <div class="feature-icon">⚡</div>
-                <h3>Ultimate Performance</h3>
-                <p>Enable hidden Windows power plans for maximum system responsiveness and reduced input lag. Perfect for competitive gaming and esports.</p>
-            </div>
-            <div class="feature-card fade-in delay-2">
-                <div class="feature-icon">🛡️</div>
-                <h3>Privacy Protection</h3>
-                <p>Disable telemetry and data collection services to protect your privacy and free up system resources. Take back control of your data.</p>
-            </div>
-            <div class="feature-card fade-in delay-1">
-                <div class="feature-icon">🎮</div>
-                <h3>Game Mode</h3>
-                <p>Special optimizations that prioritize gaming performance over other system tasks. One-click profiles for popular games.</p>
-            </div>
-            <div class="feature-card fade-in delay-2">
-                <div class="feature-icon">🔧</div>
-                <h3>One-Click Tweaks</h3>
-                <p>Easy to use interface with pre-configured optimization profiles for different use cases. No technical knowledge required.</p>
-            </div>
-            <div class="feature-card fade-in delay-3">
-                <div class="feature-icon">📶</div>
-                <h3>Network Optimization</h3>
-                <p>Reduce ping and network latency with our advanced network tweaks for online gaming. Say goodbye to lag spikes.</p>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Unlock Maximum <span>FPS</span> on Windows</h1>
+                    <p>Tweakr is the ultimate optimization tool for competitive gamers. Automatically fine-tune your Windows 10/11 system for peak gaming performance with one click.</p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="cta-button">Download Now</a>
+                        <a href="#features" class="secondary-button">View Features</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">+65%</div>
+                            <div class="stat-label">Average FPS Boost</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">100+</div>
+                            <div class="stat-label">Downloads</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">99%</div>
+                            <div class="stat-label">User Satisfaction</div>
+                        </div>
+                    </div>
+                    <div class="windows-badge">
+                        <i class="fab fa-windows"></i> Windows 10 & 11 Only
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-card">
+                                <div class="feature-title">Performance Dashboard</div>
+                                <p class="feature-desc">Real-time system monitoring</p>
+                                <div class="mockup-bar"><div class="mockup-bar-fill"></div></div>
+                                <div class="mockup-bar"><div class="mockup-bar-fill" style="width: 85%"></div></div>
+                                <div class="mockup-bar"><div class="mockup-bar-fill" style="width: 60%"></div></div>
+                            </div>
+                            <div class="mockup-card">
+                                <div class="feature-title">Current FPS</div>
+                                <div class="stat-value">142</div>
+                            </div>
+                            <div class="mockup-card">
+                                <div class="feature-title">Optimization Presets</div>
+                                <p class="feature-desc">Competitive | Balanced | Quality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Performance Meter -->
-    <div class="performance-meter fade-in">
-        <div class="metric">
-            <div class="label">CPU Performance</div>
-            <div class="value">+0%</div>
-        </div>
-        <div class="metric">
-            <div class="label">GPU Performance</div>
-            <div class="value">+0%</div>
-        </div>
-        <div class="metric">
-            <div class="label">RAM Optimization</div>
-            <div class="value">+0%</div>
-        </div>
-        <div class="metric">
-            <div class="label">FPS Increase</div>
-            <div class="value">+0%</div>
-        </div>
-    </div>
-    
-    <!-- Comparison Table -->
-    <div class="comparison fade-in">
-        <table>
-            <thead>
-                <tr>
-                    <th class="feature-name">Feature</th>
-                    <th>Free Version</th>
-                    <th class="highlight">Pro Version</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="feature-name">FPS Boost</td>
-                    <td class="check">✓ Basic</td>
-                    <td class="check">✓ Extreme (+40%)</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">Power Plans</td>
-                    <td>High Performance</td>
-                    <td class="check">✓ Ultimate Performance</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">Game Optimizations</td>
-                    <td>5 presets</td>
-                    <td class="check">✓ 20+ presets</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">Network Tweaks</td>
-                    <td class="cross">✗ Not available</td>
-                    <td class="check">✓ Advanced latency reduction</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">Priority Support</td>
-                    <td class="cross">✗ Standard</td>
-                    <td class="check">✓ 24/7 Priority</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">Price</td>
-                    <td>Free</td>
-                    <td class="check">$1.99 (one-time)</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <!-- Before/After Section -->
-    <div class="before-after-section fade-in">
-        <div class="before-after">
-            <h2 class="section-title">See The Difference</h2>
-            <div class="before-after-container" id="beforeAfterContainer">
-                <div class="before-image"></div>
-                <div class="after-image" id="afterImage"></div>
-                <div class="slider-handle" id="sliderHandle"></div>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Advanced FPS Optimization</h2>
+                <p class="section-subtitle">Tweakr offers everything you need to maximize your gaming performance on Windows</p>
             </div>
-            <div class="before-after-labels">
-                <span>Before Tweakr</span>
-                <span>After Tweakr</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Benchmark Section -->
-    <div class="benchmark-section fade-in">
-        <div class="benchmark-chart">
-            <h2 class="section-title">Performance Benchmarks</h2>
-            <canvas id="performanceChart"></canvas>
-            <div class="chart-legend">
-                <span class="before">Before Optimization</span>
-                <span class="after">After Optimization</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Trust Badges -->
-    <div class="trust-section fade-in">
-        <div class="trust-badges">
-            <div class="badge">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                <span>Virus-Free Guarantee</span>
-            </div>
-            <div class="badge">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/></svg>
-                <span>10,000+ Downloads</span>
-            </div>
-            <div class="badge">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                <span>24/7 Support</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Testimonials -->
-    <section class="testimonials fade-in">
-        <h2 class="section-title">What Gamers Are Saying</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">I gained 40+ FPS in Valorant after using Tweakr Pro. My system runs buttery smooth now, and the difference is night and day in competitive matches.</p>
-                <p class="testimonial-author">Mark, Competitive CS:GO Player</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">Finally a tool that actually delivers on its promises. My ping dropped by 20ms consistently, and I'm hitting shots I never could before.</p>
-                <p class="testimonial-author">Sarah, Esports Enthusiast</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">As a PC builder, I install Tweakr Pro on every system I sell. The one-click optimizations save me hours of manual tweaking and my clients love the results.</p>
-                <p class="testimonial-author">Alex, Professional PC Builder</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">One-Click Optimization</h3>
+                    <p class="feature-desc">Automatically apply the best settings for your specific hardware configuration with a single click.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced CPU/GPU Tuning</h3>
+                    <p class="feature-desc">Fine-tune processor and graphics card settings for maximum performance in your favorite games.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3 class="feature-title">Game-Specific Profiles</h3>
+                    <p class="feature-desc">Custom optimization profiles for over 200 popular games. Tweakr learns and adapts to each game's requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Real-Time Monitoring</h3>
+                    <p class="feature-desc">Monitor FPS, CPU, GPU, and RAM usage in real-time with an in-game overlay that doesn't impact performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h3 class="feature-title">Safe & Reversible</h3>
+                    <p class="feature-desc">All changes are completely reversible. Create system restore points with one click before making any adjustments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-window-restore"></i>
+                    </div>
+                    <h3 class="feature-title">Windows Optimization</h3>
+                    <p class="feature-desc">Specialized tweaks for Windows 10 & 11 to disable unnecessary services and background processes during gameplay.</p>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Download CTA -->
-    <section class="download-cta" id="download">
-        <h2 class="fade-in">Ready to Transform Your Gaming PC?</h2>
-        <p class="fade-in delay-1">Download Tweakr Pro today and experience professional-grade optimization. Free version available with premium features unlocked.</p>
-        <a href="Tweakr.exe" class="btn btn-download pulse fade-in delay-2" download>
-            <i class="fas fa-download"></i> Download Tweakr Pro
-        </a>
-        <p class="download-info fade-in delay-2">Windows 10/11 | Version 1.0.0 | 5.2 MB</p>
+
+    <!-- Download Section -->
+    <section id="download">
+        <div class="container">
+            <div class="download">
+                <div class="download-content">
+                    <div class="section-header">
+                        <h2 class="section-title">Download Tweakr</h2>
+                        <p class="section-subtitle">Join millions of gamers and unlock your system's full potential on Windows</p>
+                    </div>
+                    <div class="version-badge">Latest Version: 2.3.1 | Optimized for Windows 10 & 11</div>
+                    
+                    <div class="download-box">
+                        <div class="windows-icon">
+                            <i class="fab fa-windows"></i>
+                        </div>
+                        <h3>Tweakr for Windows</h3>
+                        <p>Compatible with Windows 10 and 11 (64-bit)</p>
+                        
+                        <div class="download-info">
+                            <div class="info-item">
+                                <div class="info-label">File Size</div>
+                                <div class="info-value">19.4 MB</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Version</div>
+                                <div class="info-value">2.3.1</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Downloads</div>
+                                <div class="info-value">100+</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="cta-button download-button">
+                            <i class="fas fa-download"></i> Download Now
+                        </a>
+                        <div class="download-note">Windows 10/11 | 64-bit | 100% Safe & Secure</div>
+                    </div>
+                    
+                    <div class="requirements" id="requirements">
+                        <h3 class="section-title" style="text-align: center; font-size: 1.8rem;">System Requirements</h3>
+                        <div class="requirements-grid">
+                            <div class="requirement-card">
+                                <h4 class="requirement-title">Minimum Requirements</h4>
+                                <ul class="requirement-list">
+                                    <li>
+                                        <span class="requirement-name">OS</span>
+                                        <span class="requirement-value">Windows 10 64-bit</span>
+                                    </li>
+                                    <li>
+                                        <span class="requirement-name">CPU</span>
+                                        <span class="requirement-value">Dual-core 2.5GHz</span>
+                                    </li>
+                                    <li>
+                                        <span class="requirement-name">RAM</span>
+                                        <span class="requirement-value">4GB</span>
+                                    </li>
+                                    <li>
+                                        <span class="requirement-name">Storage</span>
+                                        <span class="requirement-value">50MB</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="requirement-card">
+                                <h4 class="requirement-title">Recommended</h4>
+                                <ul class="requirement-list">
+                                    <li>
+                                        <span class="requirement-name">OS</span>
+                                        <span class="requirement-value">Windows 11 64-bit</span>
+                                    </li>
+                                    <li>
+                                        <span class="requirement-name">CPU</span>
+                                        <span class="requirement-value">Quad-core 3.0GHz+</span>
+                                    </li>
+                                    <li>
+                                        <span class="requirement-name">RAM</span>
+                                        <span class="requirement-value">8GB+</span>
+                                    </li>
+                                    <li>
+                                        <span class="requirement-name">Storage</span>
+                                        <span class="requirement-value">100MB SSD</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links fade-in">
-                <a href="#">Home</a>
-                <a href="#features">Features</a>
-                <a href="#download">Download</a>
-                <a href="#">Support</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="#" class="footer-logo">Tweak<span>r</span></a>
+                    <p class="footer-desc">The ultimate FPS optimization tool for Windows gamers. Maximize performance, minimize lag, and dominate the competition.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-group">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#requirements">Requirements</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Game Compatibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="social-links fade-in delay-1">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
+            <div class="copyright">
+                &copy; 2023 Tweakr Technologies. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--error);"></i> for gamers.
             </div>
-            <p class="copyright fade-in delay-2">© 2025 Tweakr Pro. All rights reserved. Not affiliated with Microsoft or any game developers.</p>
         </div>
     </footer>
-    
-    <!-- Download Modal -->
-    <div class="download-modal" id="downloadModal">
-        <span class="close-modal">&times;</span>
-        <p>Preparing <span class="filename">Tweakr_Pro.exe</span> for download...</p>
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress" id="downloadProgress"></div>
-                <div class="progress-text" id="progressText">0%</div>
-            </div>
-        </div>
-        <p>Your download will start automatically. Please wait...</p>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Typewriter Effect
-        const typewriter = document.getElementById('typewriter');
-        const texts = [
-            "Boost Your FPS",
-            "Reduce System Latency",
-            "Optimize Gaming Performance",
-            "Dominate The Competition"
-        ];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-        
-        function type() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typewriter.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50;
-            } else {
-                typewriter.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = charIndex === currentText.length ? 1500 : 100;
-            }
-            
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(type, typingSpeed);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, typingSpeed);
-            }
-        }
-        
-        // Start the typewriter effect after slight delay
-        setTimeout(type, 1000);
-        
-        // Counter Animation
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
-        
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-count');
-            const count = +counter.innerText;
-            const increment = target / speed;
-            
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 1);
-            } else {
-                counter.innerText = target + '+';
-            }
-            
-            function updateCount() {
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(updateCount, 1);
-                } else {
-                    counter.innerText = target + '+';
-                }
-            }
-        });
-        
-        // Fixed Before/After Slider Functionality
-        const beforeAfterContainer = document.getElementById('beforeAfterContainer');
-        const afterImage = document.getElementById('afterImage');
-        const sliderHandle = document.getElementById('sliderHandle');
-        
-        let isDragging = false;
-        
-        function updateSliderPosition(clientX) {
-            const containerRect = beforeAfterContainer.getBoundingClientRect();
-            let newWidth = ((clientX - containerRect.left) / containerRect.width) * 100;
-            
-            // Constrain between 0 and 100
-            newWidth = Math.max(0, Math.min(newWidth, 100));
-            
-            afterImage.style.width = `${newWidth}%`;
-            sliderHandle.style.left = `${newWidth}%`;
-        }
-        
-        sliderHandle.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            e.preventDefault();
-            sliderHandle.style.transform = 'translate(-50%, -50%) scale(1.1)';
-        });
-        
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                updateSliderPosition(e.clientX);
-            }
-        });
-        
-        document.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                sliderHandle.style.transform = 'translate(-50%, -50%)';
-            }
-        });
-        
-        // Touch support for mobile devices
-        sliderHandle.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            e.preventDefault();
-            sliderHandle.style.transform = 'translate(-50%, -50%) scale(1.1)';
-        });
-        
-        document.addEventListener('touchmove', (e) => {
-            if (isDragging) {
-                updateSliderPosition(e.touches[0].clientX);
-            }
-        });
-        
-        document.addEventListener('touchend', () => {
-            if (isDragging) {
-                isDragging = false;
-                sliderHandle.style.transform = 'translate(-50%, -50%)';
-            }
-        });
-        
-        // Performance Meter Animation
-        class PerformanceMeter {
-            constructor() {
-                this.meter = document.getElementById('performance-meter');
-                this.metrics = this.meter.querySelectorAll('.metric');
-                this.setupAnimation();
-            }
-            
-            setupAnimation() {
-                setInterval(() => {
-                    this.updateMetrics();
-                }, 2000);
-            }
-            
-            updateMetrics() {
-                const improvements = {
-                    cpu: 18 + Math.floor(Math.random() * 15),
-                    gpu: 22 + Math.floor(Math.random() * 20),
-                    ram: 12 + Math.floor(Math.random() * 12),
-                    fps: 28 + Math.floor(Math.random() * 25)
-                };
-                
-                this.metrics[0].querySelector('.value').textContent = `+${improvements.cpu}%`;
-                this.metrics[1].querySelector('.value').textContent = `+${improvements.gpu}%`;
-                this.metrics[2].querySelector('.value').textContent = `+${improvements.ram}%`;
-                this.metrics[3].querySelector('.value').textContent = `+${improvements.fps}%`;
-            }
-        }
-        
-        new PerformanceMeter();
-        
-        // Benchmark Chart
-        const ctx = document.getElementById('performanceChart').getContext('2d');
-        const chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['CS:GO', 'Valorant', 'Fortnite', 'Warzone', 'Apex Legends', 'Dota 2'],
-                datasets: [{
-                    label: 'Before',
-                    data: [120, 144, 90, 70, 80, 110],
-                    backgroundColor: '#555',
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    borderColor: 'rgba(255,255,255,0.1)'
-                },{
-                    label: 'After',
-                    data: [180, 210, 130, 100, 120, 160],
-                    backgroundColor: '#42aaff',
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    borderColor: 'rgba(255,255,255,0.2)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { 
-                            display: true, 
-                            text: 'Frames Per Second (FPS)',
-                            color: '#999',
-                            font: {
-                                weight: 'bold'
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(255,255,255,0.1)'
-                        },
-                        ticks: {
-                            color: '#999',
-                            stepSize: 50
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            color: '#999',
-                            font: {
-                                weight: '500'
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(15,17,26,0.9)',
-                        titleColor: '#fff',
-                        bodyColor: '#d6e4ff',
-                        borderColor: 'rgba(255,255,255,0.1)',
-                        borderWidth: 1,
-                        padding: 12,
-                        usePointStyle: true,
-                        callbacks: {
-                            label: function(context) {
-                                return context.dataset.label + ': ' + context.raw + ' FPS';
-                            }
-                        }
-                    }
-                },
-                animation: {
-                    duration: 1500,
-                    easing: 'easeOutQuart'
-                }
-            }
-        });
-        
-        // Theme Switcher
-        const themeSwitcher = document.getElementById('theme-switcher');
-        themeSwitcher.addEventListener('change', function() {
-            document.body.classList.toggle('light-mode');
-            document.querySelector('.theme-label').textContent = 
-                this.checked ? 'Light Mode' : 'Dark Mode';
-            
-            // Update chart colors for light mode
-            if (document.body.classList.contains('light-mode')) {
-                chart.options.scales.y.grid.color = 'rgba(0,0,0,0.1)';
-                chart.options.scales.y.ticks.color = '#666';
-                chart.options.scales.x.ticks.color = '#666';
-                chart.update();
-            } else {
-                chart.options.scales.y.grid.color = 'rgba(255,255,255,0.1)';
-                chart.options.scales.y.ticks.color = '#999';
-                chart.options.scales.x.ticks.color = '#999';
-                chart.update();
-            }
-        });
-        
-        // Download Button Animation
-        const downloadBtn = document.querySelector('.btn-download');
-        downloadBtn.addEventListener('mouseover', () => {
-            downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download Tweakr Pro 🚀';
-        });
-        downloadBtn.addEventListener('mouseout', () => {
-            downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download Tweakr Pro';
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 20,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Feature Card Animations
-        const featureCards = document.querySelectorAll('.feature-card');
-        featureCards.forEach(card => {
-            card.addEventListener('mouseover', () => {
-                const icon = card.querySelector('.feature-icon');
-                icon.style.transform = 'scale(1.1) rotate(5deg)';
-            });
-            card.addEventListener('mouseout', () => {
-                const icon = card.querySelector('.feature-icon');
-                icon.style.transform = 'scale(1) rotate(0)';
-            });
-        });
-        
-        // Download Modal
-        const downloadModal = document.getElementById('downloadModal');
-        const downloadProgress = document.getElementById('downloadProgress');
-        const progressText = document.getElementById('progressText');
-        const closeModal = document.querySelector('.close-modal');
-        
-        downloadBtn.addEventListener('click', function(e) {
-            if (!e.metaKey && !e.ctrlKey) { // Not holding cmd/ctrl
-                e.preventDefault();
-                showDownloadModal();
-                // Trigger actual download after animation
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 3000);
-            }
-        });
-        
-        closeModal.addEventListener('click', () => {
-            downloadModal.classList.remove('active');
-        });
-        
-        function showDownloadModal() {
-            downloadModal.classList.add('active');
-            
-            // Animate progress bar
-            let width = 0;
-            const interval = setInterval(() => {
-                width += 1;
-                downloadProgress.style.width = `${width}%`;
-                progressText.textContent = `${width}%`;
-                
-                if (width >= 100) {
-                    clearInterval(interval);
-                    progressText.textContent = 'Complete!';
-                    setTimeout(() => {
-                        downloadModal.classList.remove('active');
-                    }, 1000);
-                }
-            }, 20);
-        }
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Initialize performance meter after slight delay
-        setTimeout(() => {
-            new PerformanceMeter();
-        }, 1500);
-    </script>
 </body>
 </html>
