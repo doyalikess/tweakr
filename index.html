@@ -25,6 +25,15 @@
             --glow: 0 0 15px rgba(94, 158, 255, 0.5);
         }
 
+        /* Theme transition animation */
+        body {
+            transition: background-color 1.5s ease, color 1.5s ease;
+        }
+        
+        .theme-transition {
+            transition: all 1.5s ease !important;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -56,6 +65,7 @@
                 radial-gradient(circle at 90% 80%, rgba(94, 158, 255, 0.05) 0%, transparent 15%);
             z-index: -1;
             pointer-events: none;
+            transition: all 1.5s ease;
         }
 
         /* Custom scrollbar */
@@ -64,10 +74,12 @@
         }
         ::-webkit-scrollbar-track {
             background: var(--bg-secondary);
+            transition: all 1.5s ease;
         }
         ::-webkit-scrollbar-thumb {
             background: var(--accent);
             border-radius: 4px;
+            transition: all 1.5s ease;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-hover);
@@ -246,7 +258,7 @@
             font-size: 3.5rem;
             line-height: 1.2;
             margin-bottom: 20px;
-            background: linear-gradient(to right, #f0f0f0, #b0b0c0);
+            background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: textGlow 3s infinite alternate;
@@ -1349,10 +1361,10 @@
                     <a href="#" class="footer-logo">Tweak<span>r</span></a>
                     <p class="footer-desc">The ultimate FPS optimization tool for Windows gamers. Maximize performance, minimize lag, and dominate the competition.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="https://discord.gg/gWNPHPAr"><i class="fab fa-discord"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="https://www.youtube.com/@doyalikes"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="https://github.com/doyalikess"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="footer-links-group">
@@ -1391,6 +1403,169 @@
     </footer>
 
     <script>
+        // Theme definitions
+        const themes = [
+            {
+                name: "default",
+                bgPrimary: "#0a0a0f",
+                bgSecondary: "#121218",
+                bgTertiary: "#1a1a24",
+                textPrimary: "#f0f0f0",
+                textSecondary: "#b0b0c0",
+                accent: "#5e9eff",
+                accentHover: "#7ab0ff",
+                neon: "#00f0ff",
+                success: "#00d16c",
+                warning: "#ffb340",
+                error: "#ff4d5e",
+                shadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                glow: "0 0 15px rgba(94, 158, 255, 0.5)"
+            },
+            {
+                name: "cyberpunk",
+                bgPrimary: "#0d0221",
+                bgSecondary: "#170b34",
+                bgTertiary: "#261447",
+                textPrimary: "#f0f0f0",
+                textSecondary: "#b0b0c0",
+                accent: "#ff3864",
+                accentHover: "#ff6b8b",
+                neon: "#00f0ff",
+                success: "#2de2e6",
+                warning: "#ff9f1c",
+                error: "#ff3864",
+                shadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                glow: "0 0 15px rgba(255, 56, 100, 0.5)"
+            },
+            {
+                name: "matrix",
+                bgPrimary: "#000000",
+                bgSecondary: "#0a0a0a",
+                bgTertiary: "#121212",
+                textPrimary: "#00ff41",
+                textSecondary: "#008f11",
+                accent: "#00ff41",
+                accentHover: "#00cc33",
+                neon: "#00ff41",
+                success: "#00ff41",
+                warning: "#ffff00",
+                error: "#ff0033",
+                shadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                glow: "0 0 15px rgba(0, 255, 65, 0.5)"
+            },
+            {
+                name: "ocean",
+                bgPrimary: "#001f3f",
+                bgSecondary: "#003366",
+                bgTertiary: "#004080",
+                textPrimary: "#f0f0f0",
+                textSecondary: "#b0c4de",
+                accent: "#0074d9",
+                accentHover: "#39b0ff",
+                neon: "#00f0ff",
+                success: "#2ecc40",
+                warning: "#ffdc00",
+                error: "#ff4136",
+                shadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                glow: "0 0 15px rgba(0, 116, 217, 0.5)"
+            },
+            {
+                name: "fire",
+                bgPrimary: "#1a1a1a",
+                bgSecondary: "#2a2a2a",
+                bgTertiary: "#3a3a3a",
+                textPrimary: "#f0f0f0",
+                textSecondary: "#d0d0d0",
+                accent: "#ff4136",
+                accentHover: "#ff6b5f",
+                neon: "#ff851b",
+                success: "#2ecc40",
+                warning: "#ff851b",
+                error: "#ff4136",
+                shadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                glow: "0 0 15px rgba(255, 65, 54, 0.5)"
+            },
+            {
+                name: "purple-haze",
+                bgPrimary: "#1a0033",
+                bgSecondary: "#2a004d",
+                bgTertiary: "#3a0066",
+                textPrimary: "#f0f0f0",
+                textSecondary: "#d0b0ff",
+                accent: "#b388ff",
+                accentHover: "#d0b0ff",
+                neon: "#b388ff",
+                success: "#00d16c",
+                warning: "#ffb340",
+                error: "#ff4d5e",
+                shadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                glow: "0 0 15px rgba(179, 136, 255, 0.5)"
+            }
+        ];
+
+        // Apply random theme on page load
+        function applyRandomTheme() {
+            // Get a random theme
+            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+            
+            // Apply theme to root variables
+            document.documentElement.style.setProperty('--bg-primary', randomTheme.bgPrimary);
+            document.documentElement.style.setProperty('--bg-secondary', randomTheme.bgSecondary);
+            document.documentElement.style.setProperty('--bg-tertiary', randomTheme.bgTertiary);
+            document.documentElement.style.setProperty('--text-primary', randomTheme.textPrimary);
+            document.documentElement.style.setProperty('--text-secondary', randomTheme.textSecondary);
+            document.documentElement.style.setProperty('--accent', randomTheme.accent);
+            document.documentElement.style.setProperty('--accent-hover', randomTheme.accentHover);
+            document.documentElement.style.setProperty('--neon', randomTheme.neon);
+            document.documentElement.style.setProperty('--success', randomTheme.success);
+            document.documentElement.style.setProperty('--warning', randomTheme.warning);
+            document.documentElement.style.setProperty('--error', randomTheme.error);
+            document.documentElement.style.setProperty('--shadow', randomTheme.shadow);
+            document.documentElement.style.setProperty('--glow', randomTheme.glow);
+            
+            // Update body background gradients
+            document.body.style.background = `${randomTheme.bgPrimary} radial-gradient(circle at 15% 30%, ${lightenColor(randomTheme.bgSecondary, 0.3)}, transparent 25%), radial-gradient(circle at 85% 70%, ${lightenColor(randomTheme.bgSecondary, 0.5)}, transparent 25%)`;
+            
+            // Store the current theme in localStorage
+            localStorage.setItem('currentTheme', JSON.stringify(randomTheme));
+        }
+
+        // Helper function to lighten colors
+        function lightenColor(color, amount) {
+            // This is a simplified version - in a real app you might want a more robust solution
+            return color; // Returning the same color for simplicity
+        }
+
+        // Check if there's a stored theme and apply it, otherwise apply random
+        function initializeTheme() {
+            const storedTheme = localStorage.getItem('currentTheme');
+            if (storedTheme) {
+                // Smooth transition to stored theme
+                setTimeout(() => {
+                    const theme = JSON.parse(storedTheme);
+                    document.documentElement.style.setProperty('--bg-primary', theme.bgPrimary);
+                    document.documentElement.style.setProperty('--bg-secondary', theme.bgSecondary);
+                    document.documentElement.style.setProperty('--bg-tertiary', theme.bgTertiary);
+                    document.documentElement.style.setProperty('--text-primary', theme.textPrimary);
+                    document.documentElement.style.setProperty('--text-secondary', theme.textSecondary);
+                    document.documentElement.style.setProperty('--accent', theme.accent);
+                    document.documentElement.style.setProperty('--accent-hover', theme.accentHover);
+                    document.documentElement.style.setProperty('--neon', theme.neon);
+                    document.documentElement.style.setProperty('--success', theme.success);
+                    document.documentElement.style.setProperty('--warning', theme.warning);
+                    document.documentElement.style.setProperty('--error', theme.error);
+                    document.documentElement.style.setProperty('--shadow', theme.shadow);
+                    document.documentElement.style.setProperty('--glow', theme.glow);
+                }, 100);
+            }
+            
+            // Apply random theme after a short delay for smooth transition
+            setTimeout(applyRandomTheme, 1500);
+        }
+
+        // Initialize theme when page loads
+        window.addEventListener('load', initializeTheme);
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
