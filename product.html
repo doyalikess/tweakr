@@ -1,0 +1,1513 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tweakr — Purchase Elite PC Optimization</title>
+  <meta name="description" content="Lifetime license for Tweakr PC Optimization utility. Unlocks true hardware limits safely, securely, and reversibly.">
+  <link rel="icon" href="images/favicon.ico">
+  
+  <!-- Elite Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: rgba(10, 15, 20, 0.6);
+      --text: #ffffff;
+      --muted: #94a3b8;
+      --brand-blue: #00b4d8;
+      --brand-purple: #00f0ff;
+      --brand: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      --border: rgba(255, 255, 255, 0.05);
+      --border-hover: rgba(0, 240, 255, 0.3);
+      --radius: 14px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 56px 56px, 56px 56px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    a { color: var(--text); text-decoration: none; transition: color 0.2s ease; }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding-left: 24px; padding-right: 24px; position: relative; z-index: 10; }
+    
+    /* Reveal Animation */
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.85);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+    }
+    
+    .brand img { height: 26px; width: auto; display: block; filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3)); }
+    
+    .brand span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    
+    .links {
+      display: flex;
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 4px;
+      border-radius: 100px;
+    }
+    
+    .links a {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      transition: var(--transition);
+    }
+    
+    .links a:hover {
+      color: var(--text);
+    }
+    
+    .links a.active {
+      color: var(--text);
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link-btn {
+      font-weight: 500;
+      font-size: 13.5px;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+
+    .nav-link-btn:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      height: 38px !important;
+      padding: 0 20px !important;
+      font-size: 13px !important;
+      border-radius: 100px !important;
+      width: auto !important;
+    }
+
+    main { padding: 140px 0 64px; }
+    
+    /* Hero intro */
+    .hero { text-align: left; max-width: 600px; margin-bottom: 48px; }
+    
+    .hero h1 {
+      font-size: clamp(34px, 4.6vw, 48px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #ffffff 10%, #a4abb8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p { color: var(--muted); font-size: 15.5px; margin: 0; }
+    
+    /* Main Layout Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    
+    /* Double-Border Glassmorphic Pricing Card */
+    .pricing-card, .demo-window {
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
+      transition: var(--transition);
+    }
+    
+    .pricing-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 30px 60px rgba(0, 240, 255, 0.05);
+    }
+    
+    .pricing-card {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(130, 242, 191, 0.04);
+      color: #82f2bf;
+      font-weight: 700;
+      font-size: 9.5px;
+      border: 1px solid rgba(130, 242, 191, 0.12);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+    
+    .price-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    
+    .price-row .current {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .price-row .old {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-size: 18px;
+    }
+    
+    .price-row .meta {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    
+    .lead-text {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .feature img {
+      width: 14px;
+      height: 14px;
+      opacity: 0.5;
+    }
+    
+    /* Minimal Premium Buttons */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 24px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13.5px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: var(--transition);
+      width: 100%;
+    }
+    
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    }
+    
+    .btn:hover::after {
+      left: 100%;
+      transition: left 0.6s ease-in-out;
+    }
+    
+    .btn:hover {
+      transform: translateY(-1.5px);
+      border-color: rgba(0, 240, 255, 0.3);
+      background: rgba(0, 240, 255, 0.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    
+    .btn.primary {
+      background: var(--brand);
+      color: #000000;
+      border: none;
+      box-shadow: 0 4px 14px rgba(0, 240, 255, 0.35);
+    }
+    .btn.primary:hover {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.5);
+      color: #ffffff;
+    }
+    
+    .btn.buy-pill {
+      height: 46px;
+      font-size: 14px;
+      background: var(--brand);
+      color: #000000;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 240, 255, 0.35);
+      border-radius: 100px;
+    }
+    
+    .btn.buy-pill:hover {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.5);
+      color: #ffffff;
+    }
+    
+    .checkout-guarantee {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 4px;
+      font-size: 10.5px;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    
+    .success {
+      display: none;
+      margin-top: 18px;
+      background: rgba(5, 6, 8, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+    }
+    
+    code.key {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--brand);
+      font-size: 13.5px;
+      display: block;
+      margin: 12px 0;
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    /* Interactive Dashboard Demo Window */
+    .panel-visual {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+    
+    .demo-window {
+      width: 100%;
+      background: rgba(7, 8, 10, 0.85);
+      display: grid;
+      grid-template-rows: 38px 1fr;
+      grid-template-columns: 190px 1fr;
+      grid-template-areas: 
+        "title title"
+        "sidebar main";
+      overflow: hidden;
+    }
+    
+    .demo-titlebar {
+      grid-area: title;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      background: rgba(13, 16, 21, 0.8);
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    
+    .demo-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .demo-dot.red { background: #262a33; }
+    .demo-dot.yellow { background: #262a33; }
+    .demo-dot.green { background: #262a33; }
+    
+    .demo-sidebar {
+      grid-area: sidebar;
+      padding: 12px 6px;
+      background: rgba(10, 11, 13, 0.85);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .demo-sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    
+    .demo-sidebar img { width: 13px; height: 13px; opacity: 0.4; }
+    
+    .demo-sidebar a.active, .demo-sidebar a:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+    
+    .demo-sidebar a.active img, .demo-sidebar a:hover img {
+      opacity: 0.8;
+    }
+    
+    .demo-main {
+      grid-area: main;
+      padding: 24px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: rgba(7, 8, 10, 0.85);
+      box-shadow: inset 2px 2px 10px rgba(0,0,0,0.5);
+    }
+    
+    .section-title {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    
+    /* Simulated UI Elements inside simulator */
+    .status-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    
+    .status-indicator {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    
+    .status-indicator.unoptimized {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+    }
+    
+    .status-indicator.optimized {
+      background: rgba(0, 240, 255, 0.04);
+      border: 1px solid rgba(0, 240, 255, 0.12);
+      color: var(--brand);
+    }
+    
+    .demo-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .demo-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .demo-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.8);
+      transition: var(--transition);
+    }
+    
+    .demo-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .demo-card.active {
+      border-color: var(--brand);
+    }
+    .demo-card.active img {
+      filter: saturate(1.1);
+    }
+    
+    .demo-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .btn.danger {
+      height: 40px;
+      border-radius: 6px;
+      background: var(--brand);
+      border: none;
+      color: #050608;
+      font-weight: 700;
+      font-size: 13px;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .btn.danger:hover {
+      background: #33f3ff;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+    }
+    
+    /* Toggle list styles for simulator */
+    .toggles-list {
+      display: grid;
+      gap: 10px;
+    }
+    
+    .toggle-item {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 10px 14px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .toggle-info {
+      text-align: left;
+    }
+    
+    .toggle-info h4 {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .toggle-info p {
+      margin: 2px 0 0;
+      font-size: 10.5px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    
+    /* Custom Toggle Switch for Simulator */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 32px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    
+    .switch input { opacity: 0; width: 0; height: 0; }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.02);
+      transition: .3s;
+      border-radius: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 10px;
+      width: 10px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--muted);
+      transition: .3s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: var(--brand);
+      border-color: var(--brand);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(14px);
+      background-color: #050608;
+    }
+    
+    /* Modals & Backdrops */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 8, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      backdrop-filter: blur(8px);
+    }
+    
+    .modal {
+      width: min(450px, 92vw);
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+    
+    .modal h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: var(--text);
+    }
+    
+    .modal p {
+      color: var(--muted);
+      font-size: 13.5px;
+      margin: 0 0 20px;
+    }
+    
+    .modal .code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(5, 6, 8, 0.95);
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: inline-block;
+      font-size: 14px;
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 24px;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.6);
+    }
+    
+    .modal-cta-group {
+      display: grid;
+      gap: 10px;
+    }
+    
+    .modal-cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    /* Accordion FAQ */
+    .faq {
+      margin-top: 88px;
+    }
+    
+    .faq h2 {
+      text-align: left;
+      margin: 0 0 32px;
+      font-size: clamp(26px, 3.4vw, 36px);
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #ffffff 10%, #a4abb8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .faq-wrapper {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .faq details {
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 16px 20px;
+      transition: var(--transition);
+    }
+    
+    .faq details[open] {
+      border-color: var(--border-hover);
+    }
+    
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      outline: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    .faq summary::after {
+      content: '+';
+      font-size: 16px;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    
+    .faq details[open] summary::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    
+    .faq details p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    /* CTA Banner Section */
+    .cta-banner {
+      margin-top: 88px;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    
+    .cta-banner h3 {
+      margin: 0 0 12px;
+      font-size: clamp(26px, 3.4vw, 38px);
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #ffffff 10%, #a4abb8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .cta-banner p {
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+      font-size: 14.5px;
+    }
+    
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 48px 0 32px;
+      background: var(--bg);
+      margin-top: 88px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      margin-bottom: 32px;
+    }
+    
+    .footer-col h4 {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    
+    .footer-links { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .footer-links a:hover {
+      color: var(--text);
+    }
+    
+    .copyright {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    
+    .copyright small { color: var(--muted); font-size: 12px; }
+    .copyright a { color: var(--muted); font-size: 12px; margin-left: 12px; }
+    .copyright a:hover { color: var(--text); }
+    
+    /* Spinner animation */
+    .spinner { animation: rotate 2s linear infinite; }
+    .spinner .path { stroke-dasharray: 1, 150; stroke-dashoffset: 0; stroke-linecap: round; animation: dash 1.5s ease-in-out infinite; }
+    @keyframes rotate { 100% { transform: rotate(360deg); } }
+    @keyframes dash {
+      0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+      50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+      100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+    }
+    
+    /* Responsive Queries */
+    @media (max-width: 990px) {
+      .grid { grid-template-columns: 1fr; }
+      .panel-visual { max-width: 600px; margin: 0 auto; width: 100%; }
+      .demo-window { height: auto; grid-template-columns: 1fr; grid-template-rows: 38px auto 1fr; grid-template-areas: "title" "sidebar" "main"; }
+      .demo-sidebar { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.04); padding: 8px; }
+      .demo-sidebar a { flex: 1; min-width: 100px; justify-content: center; padding: 6px 8px; font-size: 11.5px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Tweakr Home">
+        <img src="images/tweakr.png" alt="Tweakr logo">
+        <span>Tweakr</span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="product.html" class="active">Product</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      <div class="nav-right">
+        <a href="product.html" class="btn primary nav-btn">Get Tweakr</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    
+    <!-- Hero intro -->
+    <section class="hero">
+      <h1>Unlock More Performance</h1>
+      <p>Instant download, lifetime license, and zero background services.</p>
+    </section>
+
+    <!-- Content Grid -->
+    <div class="grid">
+      
+      <!-- Checkout Card -->
+      <div class="pricing-card" id="buy">
+        <div class="price-container">
+          <div class="price-row">
+            <span class="old">$19.99</span>
+            <span class="badge">30-day refund guarantee</span>
+          </div>
+          <div class="price-row">
+            <span class="current">$14.99</span>
+            <span class="meta">LIFETIME LICENSE</span>
+          </div>
+        </div>
+        
+        <p class="lead-text">Unlock full system priority. Bypasses standard Windows kernel scheduling limits securely.</p>
+        
+        <ul class="feature-list">
+          <li class="feature"><img src="images/gpu.svg" alt="GPU icon"> Aligns GPU context scheduler profiles</li>
+          <li class="feature"><img src="images/cpu.svg" alt="CPU icon"> Configures physical core scheduling priority</li>
+          <li class="feature"><img src="images/network.svg" alt="Network icon"> Optimizes socket queues & TCP response delay</li>
+          <li class="feature"><img src="images/windows.svg" alt="Windows icon"> Disables background telemetry logs safely</li>
+          <li class="feature"><img src="images/power.svg" alt="Power icon"> Unlocks latency-free Ultimate Power Profile</li>
+          <li class="feature"><img src="images/advanced.svg" alt="Advanced icon"> Tunes pointer precisions & USB poll timings</li>
+        </ul>
+        
+        <div class="cta" style="flex-direction: column; align-items: stretch; gap: 12px;">
+          <button id="buy-button" class="btn buy-pill" type="button" onclick="buyTweakr(this)">Unlock Tweakr License</button>
+          
+          <div id="buy-loader" style="display:none; align-items:center; justify-content:center; gap:8px; font-size:13px; color:var(--muted)">
+            <svg class="spinner" viewBox="0 0 50 50" style="width:16px; height:16px;">
+              <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="var(--brand)"></circle>
+            </svg>
+            <span id="buy-loader-text">Creating secure Stripe checkout...</span>
+          </div>
+        </div>
+        
+        <div class="checkout-guarantee">
+          <span>🛡️ SSL Secure Stripe Payments</span>
+          <span>⚡ Instant Digital Delivery</span>
+        </div>
+        
+        <!-- Local Purchase Success Element -->
+        <div class="success" id="success-container" aria-live="polite">
+          <h3 style="margin: 0 0 4px; font-size:15px; font-weight:700;">✓ License Key Ready</h3>
+          <p class="muted" style="font-size: 13px; margin: 0 0 10px;">Copy the key below to activate Tweakr:</p>
+          <code id="license-display" class="key">Fetching key...</code>
+          <div class="cta" style="gap: 8px;">
+            <a id="download-app" class="btn primary" href="#" style="display:none; font-size: 13px; height: 38px;">Download Client (.exe)</a>
+            <button id="copy-license" class="btn" type="button" onclick="copyLicense()" disabled style="font-size: 13px; height: 38px;">Copy License Key</button>
+          </div>
+          <p class="muted" style="margin:12px 0 0; font-size:11px; text-align:center; line-height: 1.4;">License will display automatically once payment completes and Stripe returns you to this page.</p>
+        </div>
+
+        <!-- License Popup Modal -->
+        <div class="modal-backdrop" id="license-modal">
+          <div class="modal">
+            <h3>License Unlocked</h3>
+            <p>Your license key has been generated. Use it to activate the Tweakr client.</p>
+            <p id="license-modal-key" class="code"></p>
+            <div class="modal-cta-group">
+              <div class="modal-cta-row">
+                <button id="modal-copy" class="btn primary" type="button">Copy Key</button>
+                <button id="modal-close" class="btn" type="button">Close</button>
+              </div>
+              <a id="modal-download" class="btn" href="#" download>Download Tweakr.exe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Software Simulator Panel -->
+      <div class="panel-visual">
+        <div class="demo-window" id="demo">
+          <div class="demo-titlebar">
+            <span class="demo-dot red"></span><span class="demo-dot yellow"></span><span class="demo-dot green"></span>
+            <strong style="margin-left:6px; font-size:11px; font-family: 'JetBrains Mono', monospace;">tweakr_core_v2.exe</strong>
+          </div>
+          
+          <div class="demo-sidebar">
+            <a class="demo-link active" data-tab="dashboard"><img src="images/sidebar-dashboard-product.svg" alt="">Dashboard</a>
+            <a class="demo-link" data-tab="tweaks"><img src="images/sidebar-tweaks-product.svg" alt="">Kernel Tweaks</a>
+            <a class="demo-link" data-tab="peripherals"><img src="images/sidebar-peripherals-product.svg" alt="">Input Interface</a>
+            <a class="demo-link" data-tab="debloat"><img src="images/sidebar-debloat-product.svg" alt="">OS Debloating</a>
+            <a class="demo-link" data-tab="graphics"><img src="images/sidebar-graphic-tweaks-product.svg" alt="">Graphics Cache</a>
+            <a class="demo-link" data-tab="power"><img src="images/sidebar-game-booster-product.svg" alt="">Power Profile</a>
+            <a class="demo-link" data-tab="bios"><img src="images/sidebar-bios-tweaks-product.svg" alt="">Motherboard BIOS</a>
+            <a class="demo-link" data-tab="advanced"><img src="images/sidebar-advanced-product.svg" alt="">Advanced Core</a>
+          </div>
+          
+          <div class="demo-main">
+            
+            <!-- Dashboard Tab -->
+            <div id="demo-tab-dashboard" class="demo-tab-content">
+              <div class="status-panel">
+                <span style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--muted)">ENGINE COMPLIANCY: <b style="color:var(--brand)">OK</b></span>
+                <span class="status-indicator unoptimized" id="demo-status-badge">UNOPTIMIZED</span>
+              </div>
+              <div class="section-title">Esport Target:</div>
+              <div class="demo-cards">
+                <div class="demo-card active" data-game="Valorant"><img src="images/game-valorant-product.png" alt="Valorant"></div>
+                <div class="demo-card" data-game="Fortnite"><img src="images/game-fortnite-product.png" alt="Fortnite"></div>
+                <div class="demo-card" data-game="Minecraft"><img src="images/game-minecraft-product.png" alt="Minecraft"></div>
+              </div>
+              <div class="demo-actions" style="margin-top: 14px;">
+                <button class="btn danger" id="optimize-action-btn" type="button" onclick="runDemoOptimization()">Run Optimization Tune</button>
+                <small id="demo-desc-text" style="font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-align: center;">Target game and click button to run simulation sequence.</small>
+              </div>
+            </div>
+
+            <!-- Tweaks Tab -->
+            <div id="demo-tab-tweaks" class="demo-tab-content" style="display:none;">
+              <div class="section-title">Kernel Tweaks</div>
+              <div class="toggles-list">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Override HPET Timer Interrupt</h4>
+                    <p>Blocks continuous hardware-interrupt loops to smooth frame pacing.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Direct Thread GPU Scheduling</h4>
+                    <p>Bypasses kernel wait-states, routing draw calls direct to GPU pipeline.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Esport Thread Context Priority</h4>
+                    <p>Pins game process priority high without breaking system dependencies.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Peripherals Tab -->
+            <div id="demo-tab-peripherals" class="demo-tab-content" style="display:none;">
+              <div class="section-title">Input Latency Interfaces</div>
+              <div class="toggles-list">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Elevate USB Polling Controller</h4>
+                    <p>Prioritizes USB interrupt schedules in the kernel scheduler queue.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Disable Pointer Precision Acceleration</h4>
+                    <p>Enforces absolute 1:1 hardware raw pixel mouse feedback limits.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Debloat Tab -->
+            <div id="demo-tab-debloat" class="demo-tab-content" style="display:none;">
+              <div class="section-title">OS Background Debloating</div>
+              <div class="toggles-list">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Disable Error Diagnostics & Telemetry</h4>
+                    <p>Prevents Windows background processes logging activity during games.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Remove Background Junk Packages</h4>
+                    <p>Frees occupied CPU and RAM memory from idle pre-installed UWP products.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Graphics Tab -->
+            <div id="demo-tab-graphics" class="demo-tab-content" style="display:none;">
+              <div class="section-title">Graphics Cache Alignment</div>
+              <div class="toggles-list">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Optimize Shader Pipeline Storage</h4>
+                    <p>Directs compiler to pre-cache graphics storage arrays dynamically.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Driver Frame Queue Priority</h4>
+                    <p>Safely sets maximum pre-rendered frame queues inside the GPU driver cache.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Power Tab -->
+            <div id="demo-tab-power" class="demo-tab-content" style="display:none;">
+              <div class="section-title">Power Profile Scheme</div>
+              <div class="toggles-list">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Deploy Ultimate Performance Scheme</h4>
+                    <p>Sets hardware states to 100% active, preventing clock throttling.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>PCI-Express Power State Override</h4>
+                    <p>Locks graphics motherboard slot in high-bandwidth states continuously.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- BIOS Tab -->
+            <div id="demo-tab-bios" class="demo-tab-content" style="display:none;">
+              <div class="section-title">BIOS Optimization Guidelines</div>
+              <p class="muted" style="font-size:12px; text-align: left; line-height: 1.5; margin-bottom: 12px;">Guidelines to align motherboard settings safely via your physical BIOS interface:</p>
+              <div class="toggles-list">
+                <div class="toggle-item"><div class="toggle-info"><h4>Disable Intel SpeedStep / C-States</h4></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+                <div class="toggle-item"><div class="toggle-info"><h4>Configure AMD Precision Boost Overdrive</h4></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+              </div>
+            </div>
+
+            <!-- Advanced Tab -->
+            <div id="demo-tab-advanced" class="demo-tab-content" style="display:none;">
+              <div class="section-title">Advanced Core Settings</div>
+              <div class="toggles-list">
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>DPC Latency Interrupt Priority</h4>
+                    <p>Aligns kernel schedules to avoid Deferred Procedure Call micro-lag stutters.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="toggle-item">
+                  <div class="toggle-info">
+                    <h4>Physical RAM Cache Assignment</h4>
+                    <p>Directs prime system memory caches directly to game thread processes.</p>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-wrapper">
+        <details>
+          <summary>Is Tweakr safe to run alongside Anti-Cheats?</summary>
+          <p>Tweakr is 100% compliant. It never alters active game files, manipulates dynamic memory structures, or hooks running processes. It modifies only standard Windows configurations, ensuring zero conflict with Vanguard, Easy Anti-Cheat, or BattlEye.</p>
+        </details>
+        <details>
+          <summary>Can I revert the optimizations?</summary>
+          <p>Yes. Tweakr creates a clean rollback backup before applying any parameters, allowing you to restore your system completely back to default factory settings with one click.</p>
+        </details>
+        <details>
+          <summary>How do I receive my license after paying?</summary>
+          <p>Upon a successful purchase, you will be automatically returned to our Product page, where our backend detects your purchase session, automatically creates and displays your license activation key, and downloads the Tweakr executable file for you.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Banner -->
+    <section class="cta-banner" aria-label="Bottom call to action">
+      <h3>Unlock your PC's true hardware potential</h3>
+      <p>Secure lifetime access, instant license activation, and safe rollback capabilities. Start playing on your real hardware limits.</p>
+      <button class="btn primary" type="button" onclick="buyTweakr(this)" style="max-width: 260px; height: 46px; font-weight: 700;">Buy Tweakr Now</button>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Product Details</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal & Safety</h4>
+          <ul class="footer-links">
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social Media</h4>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/eRmwA2mwua" target="_blank" rel="noopener">Join Our Discord</a></li>
+            <li><a href="https://www.youtube.com/@tweakrstore" target="_blank" rel="noopener">YouTube Channel</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <small>© <span id="y"></span> Tweakr. All rights reserved.</small>
+        <small>Tweakr is an independent utility and is not affiliated with Microsoft Corporation.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // PRESERVING ALL STRIPE CHECKOUT AND KEY DISTRIBUTION JS INTEGRATIONS
+    const licenseDisplay = document.getElementById('license-display');
+    const DEFAULT_DOWNLOAD_URL = 'https://www.mediafire.com/file/qmfrcd82ln4x5yk/tweakr.exe/file';
+
+    async function buyTweakr(btn) {
+      const button = btn || document.getElementById('buy-button');
+      const originalHTML = button.innerHTML;
+      const loader = document.getElementById('buy-loader');
+      const loaderText = document.getElementById('buy-loader-text');
+      
+      button.disabled = true;
+      if (loader) {
+        loader.style.display = 'flex';
+      } else {
+        button.innerHTML = 'Creating checkout…';
+      }
+
+      let startTime = Date.now();
+      const messages = [
+        { time: 0, text: 'Creating checkout…' },
+        { time: 5000, text: 'Waking up server…' },
+        { time: 15000, text: 'This can take up to 50s…' },
+        { time: 30000, text: 'Still working on it…' },
+        { time: 45000, text: 'Almost there…' }
+      ];
+
+      const interval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const msg = messages.slice().reverse().find(m => elapsed >= m.time);
+        if (msg) {
+          if (loaderText) loaderText.textContent = msg.text;
+          button.innerHTML = msg.text;
+        }
+      }, 1000);
+
+      try {
+        const response = await fetch('https://tweakr-backend.zachsaliba123.workers.dev/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await response.json();
+        if (data && data.url) {
+          window.location.href = data.url;
+          return;
+        }
+        alert('Error: ' + (data && (data.error || JSON.stringify(data)) || 'Failed to create checkout'));
+      } catch (err) {
+        alert('Network error. Please try again.');
+      } finally {
+        clearInterval(interval);
+        button.innerHTML = originalHTML;
+        button.disabled = false;
+        if (loader) loader.style.display = 'none';
+      }
+    }
+
+    async function checkForLicense() {
+      const hash = window.location.hash || '';
+      const hasDownload = hash.includes('download');
+      const savedLicense = localStorage.getItem('tweakr_license_key');
+      const savedDl = localStorage.getItem('tweakr_download_url');
+
+      if (hasDownload) {
+        document.getElementById('success-container').style.display = 'block';
+        if (savedDl) showDownload(savedDl);
+        if (savedLicense) {
+          showLicense(savedLicense);
+        } else {
+          licenseDisplay.textContent = 'Waiting for session… append ?session_id=cs_xxx';
+        }
+      } else if (savedLicense) {
+        showLicense(savedLicense);
+        return;
+      }
+
+      let sessionId = null;
+      if (hasDownload) {
+        const hashWithoutDownload = hash.replace('#download', '').replace('?', '');
+        if (hashWithoutDownload) {
+          const hashParams = new URLSearchParams(hashWithoutDownload);
+          sessionId = hashParams.get('session_id');
+        }
+      }
+      if (!sessionId) {
+        const urlParams = new URLSearchParams(window.location.search);
+        sessionId = urlParams.get('session_id');
+      }
+      if (sessionId && sessionId.startsWith('cs_')) {
+        await fetchLicense(sessionId);
+        if (hasDownload && localStorage.getItem('tweakr_license_key')) {
+          window.history.replaceState({}, document.title, window.location.pathname + '#download');
+        }
+      }
+    }
+
+    function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    async function fetchLicense(sessionId) {
+      let attempts = 0;
+      const maxAttempts = 15;
+      while (attempts < maxAttempts) {
+        attempts++;
+        licenseDisplay.textContent = `Fetching license key… (${attempts}/${maxAttempts})`;
+        try {
+          const resp = await fetch('https://tweakr-backend.zachsaliba123.workers.dev/api/license/' + encodeURIComponent(sessionId));
+          if (!resp.ok) throw new Error('HTTP ' + resp.status);
+          const data = await resp.json();
+          if (data && data.license_key) {
+            const key = data.license_key;
+            localStorage.setItem('tweakr_license_key', key);
+            localStorage.setItem('tweakr_license_time', new Date().toISOString());
+            if (data.download_url) {
+              localStorage.setItem('tweakr_download_url', data.download_url);
+              showDownload(data.download_url);
+            }
+            showLicense(key);
+            return;
+          }
+        } catch (e) { }
+        await delay(2000);
+      }
+      licenseDisplay.textContent = 'License not available yet. If payment completed, please wait a minute and refresh.';
+    }
+
+    function showLicense(key) {
+      document.getElementById('success-container').style.display = 'block';
+      licenseDisplay.textContent = key;
+      const btn = document.getElementById('copy-license');
+      if (btn) btn.disabled = false;
+      const savedDl = localStorage.getItem('tweakr_download_url');
+      if (savedDl) showDownload(savedDl); else showDownload(DEFAULT_DOWNLOAD_URL);
+      const modal = document.getElementById('license-modal');
+      const mk = document.getElementById('license-modal-key');
+      if (modal && mk) {
+        mk.textContent = key;
+        modal.style.display = 'flex';
+      }
+      const mc = document.getElementById('modal-copy');
+      const mclose = document.getElementById('modal-close');
+      if (mc) mc.onclick = copyLicense;
+      if (mclose) mclose.onclick = () => { document.getElementById('license-modal').style.display = 'none'; };
+    }
+
+    function showDownload(url) {
+      const a = document.getElementById('download-app');
+      if (!a || !url) return;
+      a.href = url;
+      a.style.display = 'inline-flex';
+      const md = document.getElementById('modal-download');
+      if (md) md.href = url;
+      autoDownload(url);
+    }
+
+    function autoDownload(url) {
+      if (!url) return;
+      if (localStorage.getItem('tweakr_auto_dl_done') === '1') return;
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Tweakr.exe';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      localStorage.setItem('tweakr_auto_dl_done', '1');
+    }
+
+    async function copyLicense() {
+      const key = localStorage.getItem('tweakr_license_key');
+      if (!key) return;
+      try {
+        await navigator.clipboard.writeText(key);
+        const btn = document.getElementById('copy-license');
+        const modalBtn = document.getElementById('modal-copy');
+        if (btn) {
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = 'Copy License Key'), 1200);
+        }
+        if (modalBtn) {
+          modalBtn.textContent = 'Copied!';
+          setTimeout(() => (modalBtn.textContent = 'Copy Key'), 1200);
+        }
+      } catch {
+        alert('Copy failed. Select and copy the key manually.');
+      }
+    }
+
+    // INTERACTIVE TWEAKR SOFTWARE SIMULATOR TOUR JS
+    const demoLinks = document.querySelectorAll('.demo-link');
+    const demoTabContents = document.querySelectorAll('.demo-tab-content');
+    const demoCards = document.querySelectorAll('.demo-card');
+    let selectedDemo = 'Valorant';
+
+    // Sidebar tab swapping
+    demoLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetTab = link.getAttribute('data-tab');
+        
+        demoLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        demoTabContents.forEach(content => content.style.display = 'none');
+        
+        const targetEl = document.getElementById(`demo-tab-${targetTab}`);
+        if (targetEl) {
+          targetEl.style.display = 'block';
+        } else {
+          const fallback = document.getElementById('demo-tab-tweaks');
+          if (fallback) fallback.style.display = 'block';
+        }
+      });
+    });
+
+    // Game card selection
+    demoCards.forEach(card => {
+      card.addEventListener('click', () => {
+        demoCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        selectedDemo = card.getAttribute('data-game');
+      });
+    });
+
+    function runDemoOptimization() {
+      const btn = document.getElementById('optimize-action-btn');
+      const desc = document.getElementById('demo-desc-text');
+      const statusBadge = document.getElementById('demo-status-badge');
+      const activeGame = selectedDemo || 'Valorant';
+      
+      btn.disabled = true;
+      btn.style.background = '#12141a';
+      btn.style.border = '1px solid var(--border)';
+      btn.style.color = 'var(--muted)';
+      
+      const logs = [
+        'mapping kernel priorities...',
+        'parking inactive logical core schedulers...',
+        'purging windows background telemetries...',
+        'deploying tweakr high performance power plan...',
+        'aligning graphics driver cache boundaries...',
+        'optimizing active tcp socket delays...',
+        'writing secure recovery restore backup logs...',
+        'kernel optimization sequence completed successfully!'
+      ];
+      
+      let i = 0;
+      desc.style.color = 'var(--brand)';
+      
+      function printLog() {
+        if (i < logs.length) {
+          desc.textContent = `[tweakr_core] ${logs[i]}`;
+          btn.textContent = `OPTIMIZING... (${Math.round((i / (logs.length - 1)) * 100)}%)`;
+          i++;
+          setTimeout(printLog, 400);
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'RESTART SYSTEM (DEMO)';
+          btn.style.background = 'var(--brand)';
+          btn.style.color = '#050608';
+          btn.style.border = 'none';
+          desc.textContent = `Done! Optimization profile loaded for ${activeGame}. Restart system to apply changes.`;
+          desc.style.color = '#82f2bf';
+          statusBadge.textContent = 'OPTIMIZED';
+          statusBadge.className = 'status-indicator optimized';
+          
+          btn.onclick = () => {
+            alert('Simulating PC Restart... Resetting simulator settings.');
+            resetDemo();
+          };
+        }
+      }
+      printLog();
+    }
+
+    function resetDemo() {
+      const btn = document.getElementById('optimize-action-btn');
+      const desc = document.getElementById('demo-desc-text');
+      const statusBadge = document.getElementById('demo-status-badge');
+      
+      statusBadge.textContent = 'UNOPTIMIZED';
+      statusBadge.className = 'status-indicator unoptimized';
+      desc.textContent = 'Target game and click button to run simulation sequence.';
+      desc.style.color = 'var(--muted)';
+      btn.textContent = 'Run Optimization Tune';
+      btn.style.background = 'var(--brand)';
+      btn.style.color = '#050608';
+      btn.style.border = 'none';
+      btn.onclick = runDemoOptimization;
+    }
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', checkForLicense);
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</body>
+</html>

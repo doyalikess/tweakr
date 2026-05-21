@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us — Tweakr PC Optimization</title>
+  <meta name="description" content="Learn about Tweakr's mission to unlock hardware limits and stabilize system gaming responsiveness safely and securely.">
+  <link rel="icon" href="images/favicon.ico">
+  
+  <!-- Elite Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: rgba(10, 15, 20, 0.6);
+      --text: #ffffff;
+      --muted: #94a3b8;
+      --brand-blue: #00b4d8;
+      --brand-purple: #00f0ff;
+      --brand: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+      --border: rgba(255, 255, 255, 0.05);
+      --border-hover: rgba(0, 240, 255, 0.3);
+      --radius: 14px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 56px 56px, 56px 56px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    a { color: var(--text); text-decoration: none; transition: color 0.2s ease; }
+    
+    .wrap { max-width: 1100px; margin: 0 auto; padding-left: 24px; padding-right: 24px; position: relative; z-index: 10; }
+    
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.85);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+    }
+    
+    .brand img { height: 26px; width: auto; display: block; filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.3)); }
+    
+    .brand span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    
+    .links {
+      display: flex;
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 4px;
+      border-radius: 100px;
+    }
+    
+    .links a {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      transition: var(--transition);
+    }
+    
+    .links a:hover {
+      color: var(--text);
+    }
+    
+    .links a.active {
+      color: var(--text);
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link-btn {
+      font-weight: 500;
+      font-size: 13.5px;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+
+    .nav-link-btn:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      height: 38px !important;
+      padding: 0 20px !important;
+      font-size: 13px !important;
+      border-radius: 100px !important;
+      width: auto !important;
+    }
+
+    main { padding: 140px 0 64px; }
+    
+    h1 {
+      font-size: clamp(34px, 4.6vw, 48px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin: 0 0 32px;
+      letter-spacing: -0.03em;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 10%, #a4abb8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Double-Border Glassmorphism Content Panel */
+    .panel {
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
+      transition: var(--transition);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .panel:hover {
+      border-color: var(--border-hover);
+    }
+    
+    .panel p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0 0 24px;
+    }
+    
+    .panel p:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    /* Premium Minimal Buttons */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 24px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13.5px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    }
+    
+    .btn:hover::after {
+      left: 100%;
+      transition: left 0.6s ease-in-out;
+    }
+    
+    .btn:hover {
+      transform: translateY(-1.5px);
+      border-color: rgba(0, 240, 255, 0.3);
+      background: rgba(0, 240, 255, 0.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    
+    .btn.primary {
+      background: var(--brand);
+      color: #000000;
+      border: none;
+      box-shadow: 0 4px 14px rgba(0, 240, 255, 0.35);
+    }
+    
+    .btn.primary:hover {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.5);
+      color: #ffffff;
+    }
+
+    /* Sleek CTA Banner */
+    .cta-banner {
+      margin-top: 48px;
+      text-align: center;
+    }
+    
+    .cta-banner .box {
+      padding: 48px 24px;
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: var(--transition);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cta-banner .box:hover {
+      border-color: var(--border-hover);
+    }
+    
+    .cta-banner h3 {
+      margin: 0 0 20px;
+      font-size: clamp(24px, 3.2vw, 32px);
+      font-weight: 800;
+      background: linear-gradient(180deg, #ffffff 10%, #a4abb8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .guarantees-cta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      font-size: 10.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .guarantees-cta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .guarantees-cta span::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 48px 0 32px;
+      background: var(--bg);
+      margin-top: 88px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      margin-bottom: 32px;
+    }
+    
+    .footer-col h4 {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    
+    .footer-links { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .footer-links a:hover {
+      color: var(--text);
+    }
+    
+    .copyright {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    
+    .copyright small { color: var(--muted); font-size: 12px; }
+    .copyright a { color: var(--muted); font-size: 12px; margin-left: 12px; }
+    .copyright a:hover { color: var(--text); }
+    
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Tweakr Home">
+        <img src="images/tweakr.png" alt="Tweakr logo">
+        <span>Tweakr</span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="about.html" class="active">About Us</a>
+      </nav>
+      <div class="nav-right">
+        <a href="product.html" class="btn primary nav-btn">Get Tweakr</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>About Tweakr</h1>
+    
+    <div class="panel">
+      <p>Tweakr is an ultra-lightweight, high-performance suite of safe Windows kernel and driver optimizations. We built Tweakr specifically for competitive gamers who demand maximum frame rate consistency, reduced hardware stutters, and zero input lag overhead.</p>
+      
+      <p>Unlike standard optimization tools or sketchy scripts that corrupt registry hives and break system components, Tweakr operates entirely on documented, clean kernel guidelines. We refine background operating system scheduling, optimize CPU core parking thresholds, tune driver polling, disable telemetries, and align TCP/IP networking protocols to unlock true raw performance without sacrificing Windows stability.</p>
+      
+      <p>Every single tweak deployment within Tweakr is transparently logged, fully anti-cheat compliant, and completely reversible with a single click. We believe in providing real performance increases safely, giving competitive players the ultimate peace of mind.</p>
+    </div>
+
+    <section class="cta-banner" aria-label="Bottom call to action">
+      <div class="box">
+        <h3>Unlock your PC's true hardware potential</h3>
+        <p>Lifetime access. Secure Stripe-guaranteed transactions. Zero risk built-in restore utility.</p>
+        <a class="btn primary" href="product.html" style="height: 48px; padding: 0 32px; font-size: 14.5px;">Get Tweakr Today ($14.99)</a>
+        <div class="guarantees-cta">
+          <span>Instant License</span>
+          <span>30-Day Money-Back Guarantee</span>
+          <span>Lifetime Free Updates</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Product Details</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal & Safety</h4>
+          <ul class="footer-links">
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social Media</h4>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/eRmwA2mwua" target="_blank" rel="noopener">Join Our Discord</a></li>
+            <li><a href="https://www.youtube.com/@tweakrstore" target="_blank" rel="noopener">YouTube Channel</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <small>© <span id="y"></span> Tweakr. All rights reserved.</small>
+        <small>Tweakr is an independent utility and is not affiliated with Microsoft Corporation.</small>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</body>
+</html>
